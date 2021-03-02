@@ -54,7 +54,7 @@ public class Server implements Runnable, ServerMessageReceiverListener {
                 } else if (!"test".equals(request.getSystemId())) {
                     request.reject(SMPPConstant.STAT_ESME_RINVSYSID);
                 }
-
+            TimeUnit.MILLISECONDS.sleep(1);
             }
         } catch (Exception e) {
             e.printStackTrace();
