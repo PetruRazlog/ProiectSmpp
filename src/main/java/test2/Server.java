@@ -57,7 +57,11 @@ public class Server implements Runnable, ServerMessageReceiverListener {
                         .stream()
                         .anyMatch(user -> user.getUsername().equalsIgnoreCase(request.getSystemId())
                                 && user.getParola().equalsIgnoreCase(request.getPassword()));
-                if (result) { request.accept(request.getSystemId());}
+
+                if (result) {
+                    logger.info("Client logged in!!!");
+                    request.accept(request.getSystemId());
+                }
                 else {
                     logger.error("Warning. Unauthorized user!!!");
                     request.reject(SMPPConstant.STAT_ESME_RBINDFAIL);
@@ -89,8 +93,9 @@ public class Server implements Runnable, ServerMessageReceiverListener {
                         new Date(),
                         new Date(),
                         DeliveryReceiptState.DELIVRD,
-                        "EROARE",
-                        "BLA-BLA-BLA-BLA");
+                        null,
+                        valueAsString
+                );
 
         new Thread(() -> sendDLR(smppServerSession, deliveryReceipt)).start();
         return messageId;
@@ -150,5 +155,6 @@ public class Server implements Runnable, ServerMessageReceiverListener {
                 PDUException | ResponseTimeoutException | InvalidResponseException | NegativeResponseException | IOException | InterruptedException e) {
             e.printStackTrace();
         }
+        logger.info("Message sent to client!!!");
     }
 }

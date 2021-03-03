@@ -20,7 +20,7 @@ public class MessageReceiverListenerImpl implements MessageReceiverListener {
     public void onAcceptDeliverSm(DeliverSm deliverSm) {
         try {
             //TODO: Добавить logger.info вместо sout
-            System.out.println(deliverSm.getShortMessageAsDeliveryReceipt().getText());
+            logger.info(deliverSm.getShortMessageAsDeliveryReceipt());
         } catch (InvalidDeliveryReceiptException e) {
             logger.error("Error. Undelivered message!!!", e);
 

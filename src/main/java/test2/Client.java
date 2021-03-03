@@ -4,13 +4,14 @@ import org.jsmpp.bean.*;
 import org.jsmpp.session.SMPPSession;
 import org.jsmpp.util.AbsoluteTimeFormatter;
 import org.jsmpp.util.TimeFormatter;
-
+import org.apache.log4j.Logger;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 
 public class Client implements Runnable{
 
+    private final Logger logger = Logger.getLogger(Client.class);
     private static final TimeFormatter TIME_FORMATTER =
             new AbsoluteTimeFormatter();
     static String message = getMsg();
@@ -34,7 +35,7 @@ public class Client implements Runnable{
                     8081,
                     BindType.BIND_TRX,
                     "admin",
-                    "admi",
+                    "admin",
                     "unfn",
                     TypeOfNumber.INTERNATIONAL,
                     NumberingPlanIndicator.ISDN,
@@ -83,13 +84,11 @@ public class Client implements Runnable{
         } catch (Exception e) {
             e.printStackTrace();
         }
+        logger.info("Message sent to server!!!");
     }
 
     public static void main(String[] args) {
-
         new Client().run();
-
-
 
     }
 
