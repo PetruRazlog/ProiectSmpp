@@ -13,7 +13,8 @@ import java.text.MessageFormat;
 public class SessionStateListenerImpl implements SessionStateListener {
     private final Logger logger = Logger.getLogger(Client.class);
     @Override
-    //TODO: добавить logger и написать нормальный логер с какого на какой статк поменялось и ид сессей
+
+    //TODO показать oldstate и newState
     public void onStateChange(SessionState sessionState, SessionState sessionState1, Session session) {
         logger.info(MessageFormat.format("Sessions state: {0}", sessionState));
     }

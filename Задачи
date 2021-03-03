@@ -4,16 +4,20 @@ care se pot conecta care se initiliazeaza pe partea server
 la ridicarea serverului,
 cu ajutorul streamApi faci validarea.  DONE
 
-2. Избавится от System.out.println и перейти на Logger.
+2. Избавится от System.out.println и перейти на Logger. DONE
 
 3. Изучить .gitignore
 
 4. При отправке DLR данные не писать руками
 а брать из SubmitSm
 
-5. Сделать TODO
-
 6. Логировать все действия такие как подключения клиента
-прием сообщения отправка ответа/ отправка очета
+прием сообщения отправка ответа/ отправка очета(DLR)
 
-7. Адекватные названия комитов
+7. Создать package client и server, распределить классы по этим package
+
+8. Изучить уровни логирования
+
+9. ServerMessageReceiverListener - вынести в отдельный класс по примеру SessionStateListener
+
+10. Использовать короткие сообщения и не использовать payload а текст сообщения поместить в submitSm в поле ShortMessage
