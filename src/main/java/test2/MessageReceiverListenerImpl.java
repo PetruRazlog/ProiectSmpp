@@ -8,7 +8,6 @@ import org.jsmpp.session.DataSmResult;
 import org.jsmpp.session.MessageReceiverListener;
 import org.jsmpp.session.Session;
 import org.jsmpp.util.InvalidDeliveryReceiptException;
-import test1.Server;
 
 /**
  * @author a.rusu
@@ -20,6 +19,7 @@ public class MessageReceiverListenerImpl implements MessageReceiverListener {
     @Override
     public void onAcceptDeliverSm(DeliverSm deliverSm) {
         try {
+            //TODO: Добавить logger.info вместо sout
             System.out.println(deliverSm.getShortMessageAsDeliveryReceipt().getText());
         } catch (InvalidDeliveryReceiptException e) {
             logger.error("Error. Undelivered message!!!", e);

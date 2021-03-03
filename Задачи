@@ -2,7 +2,7 @@
 1.1 Trebuie sa ai o mapa sau o lista cu clientii
 care se pot conecta care se initiliazeaza pe partea server
 la ridicarea serverului,
-cu ajutorul streamApi faci validarea.
+cu ajutorul streamApi faci validarea.  DONE
 
 2. Избавится от System.out.println и перейти на Logger.
 
@@ -10,3 +10,9 @@ cu ajutorul streamApi faci validarea.
 
 4. При отправке DLR данные не писать руками
 а брать из SubmitSm
+
+5. Сделать TODO
+
+6. Логировать все действия такие как подключения клиента прием сообщения отправка ответа/ отправка очета
+
+7. Адекватные названия комитов
