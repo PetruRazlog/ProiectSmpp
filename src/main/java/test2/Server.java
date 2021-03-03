@@ -15,6 +15,7 @@ import org.jsmpp.util.MessageId;
 import org.jsmpp.util.RandomMessageIDGenerator;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -37,6 +38,14 @@ public class Server implements Runnable, ServerMessageReceiverListener {
     }
 
     public void run() {
+        ArrayList<User> users = new ArrayList<>();
+
+        users.add(new User("test", "test"));
+        users.add(new User("admin", "admin"));
+        users.add(new User("petru", "razlog"));
+        users.add(new User("bill", "gates"));
+        users.add(new User("domnul", "atotputernic"));
+
         try {
             SMPPServerSessionListener sessionListener = new SMPPServerSessionListener(port);
 
@@ -44,16 +53,16 @@ public class Server implements Runnable, ServerMessageReceiverListener {
                 SMPPServerSession serverSession = sessionListener.accept();
                 serverSession.setMessageReceiverListener(this);
                 BindRequest request = serverSession.waitForBind(5000);
-                if ("test".equals(request.getSystemId()) &&
-                        "test".equals(request.getPassword())) {
-                    request.accept("test");
-
-                } else if (!"test".equals(request.getPassword())) {
-
-                    request.reject(SMPPConstant.STAT_ESME_RINVPASWD);
-                } else if (!"test".equals(request.getSystemId())) {
-                    request.reject(SMPPConstant.STAT_ESME_RINVSYSID);
+                boolean result = users
+                        .stream()
+                        .anyMatch(user -> user.getUsername().equalsIgnoreCase(request.getSystemId())
+                                && user.getParola().equalsIgnoreCase(request.getPassword()));
+                if (result) { request.accept(request.getSystemId());}
+                else {
+                    logger.error("Warning. Unauthorized user!!!");
+                    request.reject(SMPPConstant.STAT_ESME_RBINDFAIL);
                 }
+
             TimeUnit.MILLISECONDS.sleep(1);
             }
         } catch (Exception e) {
@@ -138,13 +147,7 @@ public class Server implements Runnable, ServerMessageReceiverListener {
 
             );
         } catch (
-                PDUException |
-                        ResponseTimeoutException |
-                        InvalidResponseException |
-                        NegativeResponseException |
-                        IOException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+                PDUException | ResponseTimeoutException | InvalidResponseException | NegativeResponseException | IOException | InterruptedException e) {
             e.printStackTrace();
         }
     }

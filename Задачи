@@ -1,8 +1,12 @@
 1. Autentificarea pe partea server
-1.1 Trebuie sa ai o mapa sau o lista cu clientii care se pot conecta care se initiliazeaza pe partea server la ridicarea serverului, cu ajutorul streamApi faci validarea.
+1.1 Trebuie sa ai o mapa sau o lista cu clientii
+care se pot conecta care se initiliazeaza pe partea server
+la ridicarea serverului,
+cu ajutorul streamApi faci validarea.
 
 2. Избавится от System.out.println и перейти на Logger.
 
 3. Изучить .gitignore
 
-4. При отправке DLR данные не писать руками а брать из SubmitSm
+4. При отправке DLR данные не писать руками
+а брать из SubmitSm
