@@ -1,4 +1,4 @@
-package test2;
+package test2.server;
 
 public class User {
     private String username;

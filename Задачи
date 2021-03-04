@@ -14,10 +14,15 @@ cu ajutorul streamApi faci validarea.  DONE
 6. Логировать все действия такие как подключения клиента
 прием сообщения отправка ответа/ отправка очета(DLR)
 
-7. Создать package client и server, распределить классы по этим package
+7. Создать package client и server,
+распределить классы по этим package DONE
 
 8. Изучить уровни логирования
 
-9. ServerMessageReceiverListener - вынести в отдельный класс по примеру SessionStateListener
+9. ServerMessageReceiverListener - вынести в отдельный класс
+по примеру SessionStateListener
 
-10. Использовать короткие сообщения и не использовать payload а текст сообщения поместить в submitSm в поле ShortMessage
+10. Использовать короткие сообщения и не использовать payload
+а текст сообщения поместить в submitSm в поле ShortMessage DONE
+
+11. SessionStateListenerImpl create as singleton
