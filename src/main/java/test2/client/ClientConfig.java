@@ -1,6 +1,9 @@
 package test2.client;
 
-public class ClientConfig {
+import lombok.Data;
+
+
+public @Data class ClientConfig {
 
     private String systemId;
     private String password;
@@ -14,39 +17,4 @@ public class ClientConfig {
         this.port = port;
     }
 
-    public String getSystemId() {
-        return systemId;
-    }
-
-    @SuppressWarnings("unused")
-    public void setSystemId(String systemId) {
-        this.systemId = systemId;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    @SuppressWarnings("unused")
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getHost() {
-        return host;
-    }
-
-    @SuppressWarnings("unused")
-    public void setHost(String host) {
-        this.host = host;
-    }
-
-    public int getPort() {
-        return port;
-    }
-
-    @SuppressWarnings("unused")
-    public void setPort(int port) {
-        this.port = port;
-    }
 }

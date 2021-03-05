@@ -1,0 +1,79 @@
+2021-03-05 12:42:44 INFO  Client:44 - Connecting to localhost port 8081 systemId admin
+2021-03-05 12:42:44 INFO  SMPPSession:239 - Connected from port 52554 to localhost/127.0.0.1:8081
+2021-03-05 12:42:44 INFO  Client:29 - Sessions state: old state CLOSED, new state OPEN, sessionId 615bfaa6
+2021-03-05 12:42:44 INFO  SMPPSession:636 - Starting PDUReaderWorker
+2021-03-05 12:42:44 INFO  SMPPServerSession:567 - Starting PDUReaderWorker with processor degree 3
+2021-03-05 12:42:44 INFO  Server:44 - Client logged in!!!
+2021-03-05 12:42:44 INFO  SMPPSession:726 - Changing processor degree to 3
+2021-03-05 12:42:44 INFO  Client:29 - Sessions state: old state OPEN, new state BOUND_TRX, sessionId 615bfaa6
+2021-03-05 12:42:44 INFO  OptionalParameters:250 - Optional Parameter Tag class org.jsmpp.bean.OptionalParameter$Sc_interface_version not found
+2021-03-05 12:42:46 INFO  Server:39 - id = 1 Length = 29
+2021-03-05 12:42:46 INFO  Client:126 - Submitted message with ID= 1 to localhost port 8081 systemId admin
+2021-03-05 12:42:46 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:48 INFO  Server:34 - Receiving delivery receipt for message ID 1 from sourceAddress to destAddress: id:1 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:48 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:48 INFO  Server:39 - id = 2 Length = 29
+2021-03-05 12:42:48 INFO  Client:126 - Submitted message with ID= 2 to localhost port 8081 systemId admin
+2021-03-05 12:42:48 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:50 INFO  Server:34 - Receiving delivery receipt for message ID 2 from sourceAddress to destAddress: id:2 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:50 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:50 INFO  Server:39 - id = 3 Length = 29
+2021-03-05 12:42:50 INFO  Client:126 - Submitted message with ID= 3 to localhost port 8081 systemId admin
+2021-03-05 12:42:50 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:52 INFO  Server:34 - Receiving delivery receipt for message ID 3 from sourceAddress to destAddress: id:3 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:52 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:52 INFO  Server:39 - id = 4 Length = 29
+2021-03-05 12:42:52 INFO  Client:126 - Submitted message with ID= 4 to localhost port 8081 systemId admin
+2021-03-05 12:42:52 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:54 INFO  Server:34 - Receiving delivery receipt for message ID 4 from sourceAddress to destAddress: id:4 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:54 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:54 INFO  Server:39 - id = 5 Length = 29
+2021-03-05 12:42:54 INFO  Client:126 - Submitted message with ID= 5 to localhost port 8081 systemId admin
+2021-03-05 12:42:54 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:56 INFO  Server:34 - Receiving delivery receipt for message ID 5 from sourceAddress to destAddress: id:5 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:56 INFO  Server:39 - id = 6 Length = 29
+2021-03-05 12:42:56 INFO  Client:126 - Submitted message with ID= 6 to localhost port 8081 systemId admin
+2021-03-05 12:42:56 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:42:56 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:58 INFO  Server:34 - Receiving delivery receipt for message ID 6 from sourceAddress to destAddress: id:6 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:42:58 INFO  Server:39 - id = 7 Length = 29
+2021-03-05 12:42:58 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:42:58 INFO  Client:126 - Submitted message with ID= 7 to localhost port 8081 systemId admin
+2021-03-05 12:42:58 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:00 INFO  Server:34 - Receiving delivery receipt for message ID 7 from sourceAddress to destAddress: id:7 sub:001 dlvrd:001 submit date:2103051242 done date:2103051242 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:00 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:00 INFO  Server:39 - id = 8 Length = 29
+2021-03-05 12:43:00 INFO  Client:126 - Submitted message with ID= 8 to localhost port 8081 systemId admin
+2021-03-05 12:43:00 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:02 INFO  Server:34 - Receiving delivery receipt for message ID 8 from sourceAddress to destAddress: id:8 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:02 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:02 INFO  Server:39 - id = 9 Length = 29
+2021-03-05 12:43:02 INFO  Client:126 - Submitted message with ID= 9 to localhost port 8081 systemId admin
+2021-03-05 12:43:02 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:04 INFO  Server:39 - id = 10 Length = 29
+2021-03-05 12:43:04 INFO  Server:34 - Receiving delivery receipt for message ID 9 from sourceAddress to destAddress: id:9 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:04 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:04 INFO  Client:126 - Submitted message with ID= 10 to localhost port 8081 systemId admin
+2021-03-05 12:43:04 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:06 INFO  Server:39 - id = 11 Length = 29
+2021-03-05 12:43:06 INFO  Client:126 - Submitted message with ID= 11 to localhost port 8081 systemId admin
+2021-03-05 12:43:06 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:06 INFO  Server:34 - Receiving delivery receipt for message ID 10 from sourceAddress to destAddress: id:10 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:06 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:08 INFO  Server:34 - Receiving delivery receipt for message ID 11 from sourceAddress to destAddress: id:11 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:08 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:08 INFO  Server:39 - id = 12 Length = 29
+2021-03-05 12:43:08 INFO  Client:126 - Submitted message with ID= 12 to localhost port 8081 systemId admin
+2021-03-05 12:43:08 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:10 INFO  Server:34 - Receiving delivery receipt for message ID 12 from sourceAddress to destAddress: id:12 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:10 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:10 INFO  Server:39 - id = 13 Length = 29
+2021-03-05 12:43:10 INFO  Client:126 - Submitted message with ID= 13 to localhost port 8081 systemId admin
+2021-03-05 12:43:10 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:12 INFO  Server:39 - id = 14 Length = 29
+2021-03-05 12:43:12 INFO  Client:126 - Submitted message with ID= 14 to localhost port 8081 systemId admin
+2021-03-05 12:43:12 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 12:43:12 INFO  Server:34 - Receiving delivery receipt for message ID 13 from sourceAddress to destAddress: id:13 sub:001 dlvrd:001 submit date:2103051243 done date:2103051243 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 12:43:12 INFO  Server:96 - Message sent to client!!!
+2021-03-05 12:43:14 INFO  SMPPSession:685 - Reading PDU session 615bfaa6 in state BOUND_TRX: Connection reset
+2021-03-05 12:43:14 INFO  Client:29 - Sessions state: old state BOUND_TRX, new state CLOSED, sessionId 615bfaa6
