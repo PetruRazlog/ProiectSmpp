@@ -1,64 +1,82 @@
 package test2.client;
 
+import org.apache.log4j.Logger;
 import org.jsmpp.InvalidResponseException;
 import org.jsmpp.PDUException;
 import org.jsmpp.bean.*;
 import org.jsmpp.extra.NegativeResponseException;
 import org.jsmpp.extra.ResponseTimeoutException;
 import org.jsmpp.session.SMPPSession;
-import org.jsmpp.util.*;
-import org.apache.log4j.Logger;
+import org.jsmpp.util.AbsoluteTimeFormatter;
+import org.jsmpp.util.TimeFormatter;
 
 import java.io.IOException;
 import java.util.Date;
-import java.util.Timer;
-import java.util.TimerTask;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 
-public class Client implements Runnable {
+public class Client {
 
     private final Logger logger = Logger.getLogger(Client.class);
     private static final TimeFormatter TIME_FORMATTER = new AbsoluteTimeFormatter();
     static String clientShortMsg = "TEST SHORT MESSAGE IN SUBMIT_SM METHOD";
 
-    @Override
-    public void run() {
+    public void start(){
         SMPPSession session = new SMPPSession();
         session.setMessageReceiverListener(MessageReceiverListenerImpl.getInstance());
         session.addSessionStateListener(SessionStateListenerImpl.getInstance());
         long messageId = 0;
 
+
         ClientConfig clientConfig =
                 new ClientConfig("admin", "admin","localhost",8081);
-        try {
 
+        bind(clientConfig,session);
+    }
+
+    public void bind(ClientConfig clientConfig, SMPPSession smppSession) {
+        final ScheduledExecutorService bindExecutorService = Executors.newSingleThreadScheduledExecutor();
+
+        bindExecutorService.scheduleAtFixedRate(() -> {
             logger.info("Connecting to "+ clientConfig.getHost() +
+                    " port "+ clientConfig.getPort() +
+                    " systemId " + clientConfig.getSystemId());
+            try {
+                smppSession.connectAndBind(
+                        clientConfig.getHost(),
+                        clientConfig.getPort(),
+                        BindType.BIND_TRX,
+                        clientConfig.getSystemId(),
+                        clientConfig.getPassword(),
+                        "unfn",
+                        TypeOfNumber.INTERNATIONAL,
+                        NumberingPlanIndicator.ISDN,
+                        "",
+                        2000
+                );
+                sendMessage(smppSession, clientConfig);
+                logger.info("Connected to "+ clientConfig.getHost() +
                         " port "+ clientConfig.getPort() +
                         " systemId " + clientConfig.getSystemId());
-            session.connectAndBind(
-                    clientConfig.getHost(),
-                    clientConfig.getPort(),
-                    BindType.BIND_TRX,
-                    clientConfig.getSystemId(),
-                    clientConfig.getPassword(),
-                    "unfn",
-                    TypeOfNumber.INTERNATIONAL,
-                    NumberingPlanIndicator.ISDN,
-                    "",
-                    2000
-            );
+            } catch (IOException e) {
+                logger.info("Bind unsuccessful on socket " + clientConfig.getHost()+ ";"+ clientConfig.getPort());
+            }
+        }, 0 ,2, TimeUnit.SECONDS);
+    }
 
-            logger.info("Connected to "+ clientConfig.getHost() +
-                        " port "+ clientConfig.getPort() +
-                        " systemId " + clientConfig.getSystemId());
 
+    private void sendMessage(SMPPSession session, ClientConfig clientConfig) {
+        try {
             TimeUnit.SECONDS.sleep(2);
-            //try to send sumbit
-            String remoteId = session.submitShortMessage(
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //try to send sumbit
+        String remoteId = null;
+        try {
+            remoteId = session.submitShortMessage(
                     "CMT",
                     TypeOfNumber.UNKNOWN,
                     NumberingPlanIndicator.UNKNOWN,
@@ -89,46 +107,27 @@ public class Client implements Runnable {
                     (byte) 0,
                     clientShortMsg.getBytes()
             );
-
-            logger.info("Submitted message with ID= "+ messageId+
-                        " to "                       + clientConfig.getHost() +
-                        " port "                     + clientConfig.getPort() +
-                        " systemId "                 + clientConfig.getSystemId());
-            messageId = Long.parseLong(remoteId);
-
-//            session.unbindAndClose();
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (InvalidResponseException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
+        } catch (PDUException e) {
             e.printStackTrace();
         } catch (ResponseTimeoutException e) {
             e.printStackTrace();
+        } catch (InvalidResponseException e) {
+            e.printStackTrace();
         } catch (NegativeResponseException e) {
             e.printStackTrace();
-        } catch (PDUException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
-        logger.info("Sent message with ID= "+ messageId+
+
+        logger.info("Submitted message with ID= "+ remoteId+
                 " to "                       + clientConfig.getHost() +
                 " port "                     + clientConfig.getPort() +
                 " systemId "                 + clientConfig.getSystemId());
     }
 
-    public void taskScheduling(Client client){
-        ScheduledExecutorService executorService =
-                Executors.newScheduledThreadPool(1);
-        ScheduledFuture<?> scheduledFuture =
-                executorService.scheduleAtFixedRate(client, 0, 2, TimeUnit.SECONDS);
-
-    }
-
     public static void main(String[] args) {
         Client client = new Client();
-        client.taskScheduling(client);
-        client.run();
+        new Thread(client::start).start();
 
     }
 
