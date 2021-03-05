@@ -31,8 +31,10 @@ public class MessageReceiverListenerImpl implements MessageReceiverListener {
     public void onAcceptDeliverSm(DeliverSm deliverSm) {
         try {
             DeliveryReceipt deliveryReceipt = deliverSm.getShortMessageAsDeliveryReceipt();
-            logger.info(String.format("Receiving delivery receipt for message ID %s from %s to %s: %s"
-                    , deliveryReceipt.getId(), deliverSm.getSourceAddr(), deliverSm.getDestAddress(), deliveryReceipt));
+            logger.info(
+                    "Receiving from " + deliverSm.getSourceAddr() +
+                    " to " + deliverSm.getDestAddress() +
+                    "delivery: " + deliveryReceipt);
         } catch (InvalidDeliveryReceiptException e) {
             logger.error("Error. Undelivered message!!!", e);
 

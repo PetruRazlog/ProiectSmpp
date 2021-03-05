@@ -58,11 +58,12 @@ public class Client {
                         2000
                 );
 
-                while(true){
+                do {
                     sendMessage(smppSession, clientConfig, counter++);
-                    logger.info("Connected to "+ clientConfig.getHost() +
-                            " port "+ clientConfig.getPort() +
-                            " systemId " + clientConfig.getSystemId());}
+                    logger.info("Connected to " + clientConfig.getHost() +
+                            " port " + clientConfig.getPort() +
+                            " systemId " + clientConfig.getSystemId());
+                } while (true);
             } catch (IOException e) {
                 logger.info("Bind unsuccessful on socket " + clientConfig.getHost()+ ";"+ clientConfig.getPort());
             }
