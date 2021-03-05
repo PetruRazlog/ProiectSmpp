@@ -665,3 +665,34 @@
 2021-03-05 14:13:13 INFO  Client:63 - Connected to localhost port 8081 systemId admin
 2021-03-05 14:13:14 INFO  SMPPServerSession:619 - Reading PDU session 6e86655d in state BOUND_TRX: Connection reset
 2021-03-05 14:13:15 INFO  Server:96 - Message sent to client!!!
+2021-03-05 14:22:51 INFO  Client:44 - Connecting to localhost port 8081 systemId admin
+2021-03-05 14:22:51 INFO  SMPPSession:239 - Connected from port 56966 to localhost/127.0.0.1:8081
+2021-03-05 14:22:51 INFO  Client:29 - Sessions state: old state CLOSED, new state OPEN, sessionId 3db0cec7
+2021-03-05 14:22:51 INFO  SMPPSession:636 - Starting PDUReaderWorker
+2021-03-05 14:22:51 INFO  SMPPServerSession:567 - Starting PDUReaderWorker with processor degree 3
+2021-03-05 14:22:51 INFO  Server:44 - Client logged in!!!
+2021-03-05 14:22:51 INFO  SMPPSession:726 - Changing processor degree to 3
+2021-03-05 14:22:51 INFO  Client:29 - Sessions state: old state OPEN, new state BOUND_TRX, sessionId 3db0cec7
+2021-03-05 14:22:53 INFO  Server:39 - id = 1 Length = 29
+2021-03-05 14:22:53 INFO  Client:127 - Submitted message with ID= 1 to localhost port 8081 systemId admin
+2021-03-05 14:22:53 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 14:22:55 INFO  Server:34 - Receiving from sourceAddress to destAddressdelivery: id:1 sub:001 dlvrd:001 submit date:2103051422 done date:2103051422 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 14:22:55 INFO  Server:96 - Message sent to client!!!
+2021-03-05 14:22:55 INFO  Server:39 - id = 2 Length = 29
+2021-03-05 14:22:55 INFO  Client:127 - Submitted message with ID= 2 to localhost port 8081 systemId admin
+2021-03-05 14:22:55 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 14:22:57 INFO  Server:39 - id = 3 Length = 29
+2021-03-05 14:22:57 INFO  Client:127 - Submitted message with ID= 3 to localhost port 8081 systemId admin
+2021-03-05 14:22:57 INFO  Server:34 - Receiving from sourceAddress to destAddressdelivery: id:2 sub:001 dlvrd:001 submit date:2103051422 done date:2103051422 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 14:22:57 INFO  Server:96 - Message sent to client!!!
+2021-03-05 14:22:57 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 14:22:59 INFO  Server:34 - Receiving from sourceAddress to destAddressdelivery: id:3 sub:001 dlvrd:001 submit date:2103051422 done date:2103051422 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 14:22:59 INFO  Server:96 - Message sent to client!!!
+2021-03-05 14:22:59 INFO  Server:39 - id = 4 Length = 29
+2021-03-05 14:22:59 INFO  Client:127 - Submitted message with ID= 4 to localhost port 8081 systemId admin
+2021-03-05 14:22:59 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 14:23:01 INFO  Server:39 - id = 5 Length = 29
+2021-03-05 14:23:01 INFO  Server:34 - Receiving from sourceAddress to destAddressdelivery: id:4 sub:001 dlvrd:001 submit date:2103051422 done date:2103051422 stat:DELIVRD err:null text:TEST MESSAGE SENT FR
+2021-03-05 14:23:01 INFO  Client:127 - Submitted message with ID= 5 to localhost port 8081 systemId admin
+2021-03-05 14:23:01 INFO  Client:63 - Connected to localhost port 8081 systemId admin
+2021-03-05 14:23:01 INFO  Server:96 - Message sent to client!!!
