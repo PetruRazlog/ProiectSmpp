@@ -17,17 +17,18 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 
+@SuppressWarnings({"TryWithIdenticalCatches", "InfiniteLoopStatement"})
 public class Client {
 
     private final Logger logger = Logger.getLogger(Client.class);
     private static final TimeFormatter TIME_FORMATTER = new AbsoluteTimeFormatter();
     static String clientShortMsg = "TEST SHORT MESSAGE IN SUBMIT_SM METHOD";
+    private static Integer counter = 0;
 
     public void start(){
         SMPPSession session = new SMPPSession();
         session.setMessageReceiverListener(MessageReceiverListenerImpl.getInstance());
         session.addSessionStateListener(SessionStateListenerImpl.getInstance());
-        long messageId = 0;
 
 
         ClientConfig clientConfig =
@@ -50,16 +51,18 @@ public class Client {
                         BindType.BIND_TRX,
                         clientConfig.getSystemId(),
                         clientConfig.getPassword(),
-                        "unfn",
+                        "unifun",
                         TypeOfNumber.INTERNATIONAL,
                         NumberingPlanIndicator.ISDN,
                         "",
                         2000
                 );
-                sendMessage(smppSession, clientConfig);
-                logger.info("Connected to "+ clientConfig.getHost() +
-                        " port "+ clientConfig.getPort() +
-                        " systemId " + clientConfig.getSystemId());
+
+                while(true){
+                    sendMessage(smppSession, clientConfig, counter++);
+                    logger.info("Connected to "+ clientConfig.getHost() +
+                            " port "+ clientConfig.getPort() +
+                            " systemId " + clientConfig.getSystemId());}
             } catch (IOException e) {
                 logger.info("Bind unsuccessful on socket " + clientConfig.getHost()+ ";"+ clientConfig.getPort());
             }
@@ -67,23 +70,24 @@ public class Client {
     }
 
 
-    private void sendMessage(SMPPSession session, ClientConfig clientConfig) {
+    private void sendMessage(SMPPSession session, ClientConfig clientConfig, int counter) {
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        //try to send sumbit
+        //try to send submit
         String remoteId = null;
+
         try {
             remoteId = session.submitShortMessage(
                     "CMT",
-                    TypeOfNumber.UNKNOWN,
+                    TypeOfNumber.ALPHANUMERIC,
                     NumberingPlanIndicator.UNKNOWN,
-                    "sourceAddress",
-                    TypeOfNumber.UNKNOWN,
-                    NumberingPlanIndicator.UNKNOWN,
-                    "destAddress",
+                    "TestSource",
+                    TypeOfNumber.INTERNATIONAL,
+                    NumberingPlanIndicator.ISDN,
+                    "123456789",
                     new ESMClass(
                             MessageMode.DEFAULT,
                             MessageType.SMSC_DEL_RECEIPT,
@@ -105,7 +109,7 @@ public class Client {
                             false
                     ),
                     (byte) 0,
-                    clientShortMsg.getBytes()
+                    (clientShortMsg+" nr: "+counter).getBytes()
             );
         } catch (PDUException e) {
             e.printStackTrace();
