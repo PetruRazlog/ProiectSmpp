@@ -36,9 +36,7 @@ public class ServerMessageReceiverListenerImpl implements ServerMessageReceiverL
     public MessageId onAcceptSubmitSm(SubmitSm submitSm, SMPPServerSession smppServerSession) {
         var messageId = messageIDGenerator.incrementAndGet();
 
-        logger.info("id  = " + messageId +
-                " Length = " +serverShortMsg.length()  +
-                " MSG= " + serverShortMsg );
+        logger.info("id = " + messageId +" Length = " +serverShortMsg.length());
 
         DeliveryReceipt deliveryReceipt =
                 new DeliveryReceipt(

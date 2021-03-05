@@ -13,10 +13,13 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 
 
-public class Client extends TimerTask {
+public class Client implements Runnable {
 
     private final Logger logger = Logger.getLogger(Client.class);
     private static final TimeFormatter TIME_FORMATTER = new AbsoluteTimeFormatter();
@@ -29,10 +32,13 @@ public class Client extends TimerTask {
         session.addSessionStateListener(SessionStateListenerImpl.getInstance());
         long messageId = 0;
 
-        ClientConfig clientConfig = new ClientConfig("admin", "admin", "localhost", 8081);
+        ClientConfig clientConfig =
+                new ClientConfig("admin", "admin","localhost",8081);
         try {
 
-            logger.info("Connecting to "+ clientConfig.getHost() + " port "+ clientConfig.getPort() + " systemId " + clientConfig.getSystemId());
+            logger.info("Connecting to "+ clientConfig.getHost() +
+                        " port "+ clientConfig.getPort() +
+                        " systemId " + clientConfig.getSystemId());
             session.connectAndBind(
                     clientConfig.getHost(),
                     clientConfig.getPort(),
@@ -46,7 +52,9 @@ public class Client extends TimerTask {
                     2000
             );
 
-            logger.info("Connected to "+ clientConfig.getHost() + " port "+ clientConfig.getPort() + " systemId " + clientConfig.getSystemId());
+            logger.info("Connected to "+ clientConfig.getHost() +
+                        " port "+ clientConfig.getPort() +
+                        " systemId " + clientConfig.getSystemId());
 
             TimeUnit.SECONDS.sleep(2);
             //try to send sumbit
@@ -109,11 +117,19 @@ public class Client extends TimerTask {
                 " systemId "                 + clientConfig.getSystemId());
     }
 
+    public void taskScheduling(Client client){
+        ScheduledExecutorService executorService =
+                Executors.newScheduledThreadPool(1);
+        ScheduledFuture<?> scheduledFuture =
+                executorService.scheduleAtFixedRate(client, 0, 2, TimeUnit.SECONDS);
+
+    }
+
     public static void main(String[] args) {
-        Timer timer = new Timer();
         Client client = new Client();
+        client.taskScheduling(client);
         client.run();
-        timer.schedule(client,0,2000);
+
     }
 
 }
